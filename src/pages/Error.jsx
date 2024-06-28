@@ -1,5 +1,4 @@
 
-import '../assets/error_page/style.css'
 const Error = () => {
     return (
 
