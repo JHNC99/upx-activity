@@ -3,11 +3,29 @@ import FilterList from "./components/FilterList";
 import List from "./components/List";
 import { Paginate } from "./components/Paginate";
 const ListCharacters = () => {
-  const { characters, numOfPages } = useCharacters();
+  const {
+    characters,
+    numOfPages,
+    setPage,
+    page,
+    optimizedDebounce,
+    localSearch,
+    isLoading,
+    handleSubmit,
+    handleSearch,
+    searchStatus,
+  } = useCharacters();
   return (
     <div className="card">
       <div className="card-body">
-        <FilterList />
+        <FilterList
+          optimizedDebounce={optimizedDebounce}
+          localSearch={localSearch}
+          isLoading={isLoading}
+          handleSubmit={handleSubmit}
+          handleSearch={handleSearch}
+          searchStatus={searchStatus}
+        />
         <div className="table-responsive  rounded">
           <table className="table align-middle text-nowrap mb-0">
             <thead>
@@ -26,7 +44,9 @@ const ListCharacters = () => {
                 ))}
             </tbody>
           </table>
-          {numOfPages > 1 && <Paginate />}
+          {numOfPages > 1 && (
+            <Paginate page={page} setPage={setPage} numOfPages={numOfPages} />
+          )}
         </div>
       </div>
     </div>

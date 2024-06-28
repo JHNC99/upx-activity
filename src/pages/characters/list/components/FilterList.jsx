@@ -1,14 +1,13 @@
-import { useCharacters } from "../../../../hooks";
+import PropTypes from "prop-types";
 import { FormInput, FormSelect } from "../../../../components";
-const FilterList = () => {
-  const {
-    optimizedDebounce,
-    localSearch,
-    handleSubmit,
-    isLoading,
-    handleSearch,
-    searchStatus,
-  } = useCharacters();
+const FilterList = ({
+  optimizedDebounce,
+  localSearch,
+  handleSubmit,
+  isLoading,
+  handleSearch,
+  searchStatus,
+}) => {
   const status = [
     {
       label: "Todos",
@@ -64,3 +63,11 @@ const FilterList = () => {
 };
 
 export default FilterList;
+FilterList.propTypes = {
+  optimizedDebounce: PropTypes.func.isRequired,
+  localSearch: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  searchStatus: PropTypes.string.isRequired,
+};

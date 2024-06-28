@@ -1,7 +1,6 @@
+import PropTypes from "prop-types";
 import ReactPaginate from "react-paginate";
-import { useCharacters} from "../../../../hooks";
-export const Paginate = () => {
-  const { page, setPage, numOfPages } = useCharacters();
+export const Paginate = ({ page, setPage, numOfPages }) => {
   const handlePageClick = (data) => {
     const selectedPage = data.selected + 1;
     setPage(selectedPage);
@@ -30,4 +29,9 @@ export const Paginate = () => {
       />
     </div>
   );
+};
+Paginate.propTypes = {
+  page: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
+  numOfPages: PropTypes.number.isRequired,
 };
